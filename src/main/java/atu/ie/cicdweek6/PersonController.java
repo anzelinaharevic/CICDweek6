@@ -21,4 +21,16 @@ public class PersonController {
         return service.create(person);
     }
 
+    @GetMapping
+    public List<Person> all() { return service.findAll(); }
+
+    @GetMapping("/{id}")
+    public Person byId(@PathVariable Long id) {
+        return service.findById(id);
+    }
+
+    @PutMapping("/{id}")
+    public Person update(@PathVariable Long id, @Valid @RequestBody Person person) {
+        return service.update(id, person);
+    }
 }
